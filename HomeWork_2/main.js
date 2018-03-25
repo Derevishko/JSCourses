@@ -66,7 +66,7 @@ function time(){
 	let h= t.getHours();
 	let m= t.getMinutes();
 
-	let last= (23-h)*60+(59-m);
+	let last= (23-h)*60+(60-m);
 	alert("До конца дня осталось "+last+" минут");
 	console.log("До конца дня осталось "+last+" минут");
 }
