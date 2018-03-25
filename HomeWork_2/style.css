@@ -1,0 +1,60 @@
+body{
+	background-color: #aaaaaa;
+}
+
+p{
+	width: 30vw;
+	height: 50px;
+	min-width: 320px;
+
+	background-color: #bbbbbb;
+
+	border-style: solid;
+	border-width: 1px;
+	border-color: green;
+	border-radius: 10px;
+
+	font-family:  "Arial";
+	font-size: 18px;
+	color: red;
+
+
+
+	padding: 15px;
+
+	box-sizing: border-box;
+
+
+}
+p.ex{
+	color:green;
+	font-size: 14px;
+	margin-left:20px;
+}
+
+p#Name{
+	
+	min-width: 320px;
+	min-height: 30px;
+
+
+	border-width: 1px;
+	border-color: red;
+	
+	font-size: 20px;
+	color: red;
+}
+
+p.op{
+	margin-left: 40px;
+	color: blue;
+	border-color: blue;
+}
+
+p#imag{
+	background-image: url("H.png");
+	width: 444px;
+	height: 74px;
+	margin-left: 60px;
+
+}
