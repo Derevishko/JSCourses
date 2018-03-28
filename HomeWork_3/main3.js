@@ -21,9 +21,10 @@ var home={
 		else if(typeof(str)=="string"){
 			this.roam.forEach(function(e){
 				if(r==e.r){
+					alert("kill");
 					e.arr= e.arr.filter(function(t){
-						return t!=str;
 						index=false;
+						return t==str;
 					})
 					if(index){
 						alert("Такой человек не живёт в этой квартире "+r+"!!!");
@@ -38,7 +39,7 @@ var home={
 		var index= true;
 		this.roam.forEach(function(e){
 			if(r==e.r){
-				e.arr= undefined;
+				e.arr= [];
 				index=false;
 			}
 		})
@@ -73,14 +74,15 @@ var home={
 		})
 
 		this.roam.forEach(function(a){
-			a.arr.forEach(function(e){
-				if(e!=undefined){
-					if(e.age>=18){
-						str[a.r]=e.name+"-"+(G*a.sq/S/part[a.r])+"\n";
-						
+			if(a.arr!=undefined){
+				a.arr.forEach(function(e){
+					if(e!=undefined){
+						if(e.age>=18){
+							str[a.r]=e.name+"-"+(G*a.sq/S/part[a.r])+"\n";
+						}
 					}
-				}
-			})
+				})
+			}
 
 			let STR= "";
 			str.forEach(function(e){
@@ -109,5 +111,6 @@ home.pusOrKill(1, Denis);
 home.pusOrKill(2, Vlad);
 home.pusOrKill(3, Maxim);
 home.pusOrKill(4, Andrey);
-
+// home.killAll(1);
+home.pusOrKill(2,"Влад");
 home.giveGold(1000);
