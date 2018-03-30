@@ -1,43 +1,50 @@
-var loc= function () {
-	document.write( "Адрес страницы - "+location.href+"<br \/>");
-	document.writeln( "Хост страницы - "+location.host+"<br \/>");
-	document.writeln( "Хеш страницы - "+location.hash+"<br \/>");
-	document.writeln( "Порт страницы - "+location.port+"<br \/>");
-	document.writeln( "Протокол страницы - "+location.protocol+"<br \/>");
-	document.writeln( "search страницы - "+location.search+"<br \/>");
-}
-loc();
+var table= "<table><tr><td>Функция</td><td>Результат</td></tr>";
 
-var	scren= function(){
-	document.write( "Ширина экрана - "+screen.width+"<br \/>");
-	document.write( "Высота экрана - "+screen.height+"<br \/>");
-	document.write( "Глубина цветопередачи экрана - "+screen.colorDepth+"<br \/>");
-	document.write( "Полезная ширина экрана - "+screen.availWidth+"<br \/>");
-	document.write( "Полезная высота экрана - "+screen.availHeight+"<br \/>");
-	document.write( "Ориентация экрана - "+screen.orientation+"<br \/>");
+	table+= "<tr><td>Адрес страницы </td><td>" +location.href+"</td></tr>";
+	table+= "<tr><td>Хост страницы</td><td>"+location.host+"</td></tr>";
+	table+= "<tr><td>Хеш страницы - </td><td>"+location.hash+"</td></tr>";
+	table+= "<tr><td>Порт страницы - </td><td>"+location.port+"</td></tr>";
+	table+= "<tr><td>Протокол страницы - </td><td>"+location.protocol+"</td></tr>";
+	table+= "<tr><td>search страницы - </td><td>"+location.search+"</td></tr>";
+
+
+
+table+= "<tr><td>Ширина экрана</td><td>"+screen.width+"</td></tr>";
+table+= "<tr><td>Высота экрана</td><td>"+screen.height+"</td></tr>";
+table+= "<tr><td>Глубина цветопередачи экрана</td><td>"+screen.colorDepth+"</td></tr>";
+table+= "<tr><td>Полезная ширина экрана</td><td>"+screen.availWidth+"</td></tr>";
+table+= "<tr><td>Полезная высота экрана</td><td>"+screen.availHeight+"</td></tr>";
+table+= "<tr><td>Ориентация экран</td><td>"+screen.orientation+"</td></tr>";
 	
-}
-scren();
 
-var navi= function(){
-	document.write( "appCodeName - "+navigator.appCodeName+"<br \/>");
-	document.write( "appName - "+navigator.appName+"<br \/>");
-	document.write( "cookieEnabled - "+navigator.cookieEnabled+"<br \/>");
-	document.write( "onLine - "+navigator.onLine+"<br \/>");
-	document.write( "userAgent - "+navigator.userAgent+"<br \/>");
+
+
+	table+= "<tr><td>appCodeName</td><td>"+navigator.appCodeName+"</td></tr>";
+	table+= "<tr><td>appName</td><td>"+navigator.appName+"</td></tr>";
+	table+= "<tr><td>cookieEnabled</td><td>"+navigator.cookieEnabled+"</td></tr>";
+	table+= "<tr><td>onLine</td><td>"+navigator.onLine+"</td></tr>";
+	table+= "<tr><td>userAgent</td><td>"+navigator.userAgent+"</td></tr>";
 	
-}
-navi();
 
-var win= function(){
-	document.write( "Смещение по ширине окна - "+window.screenX+"<br \/>");
-	document.write( "Смещение по высоте окна - "+window.screenY+"<br \/>");
-	document.write( "Прокручено по ширине - "+window.scrollX+"<br \/>");
-	document.write( "Прокрученопо высоте - "+window.scrollY+"<br \/>");
-	document.write( "Полезная ширина окна - "+window.innerWidth+"<br \/>");
-	document.write( "Полезная высота окна - "+window.innerHeight+"<br \/>");
-}
-win();
+table+= "<tr><td>Смещение по ширине окна</td><td>"+window.screenX+"</td></tr>";
+table+= "<tr><td>Смещение по высоте окна</td><td>"+window.screenY+"</td></tr>";
+table+= "<tr><td>Прокручено по ширине</td><td>"+window.scrollX+"</td></tr>";
+table+= "<tr><td>Прокрученопо высоте</td><td>"+window.scrollY+"</td></tr>";
+table+= "<tr><td>Полезная ширина окна</td><td>"+window.innerWidth+"</td></tr>";
+table+= "<tr><td>Полезная высота окна</td><td>"+window.innerHeight+"</td></tr>";
+
+
+
+
+	// history.go(1);
+	// history.back();
+	// history.forvard();
+	table+= "<tr><td>Длинна истории</td><td>"+history.length+"</td></tr></table>";
+  
+
+ document.writeln(table);
+
+ var t= setTimeout(function(){
 
 if(confirm("Перезагрузить страницу?")){
 	location.reload();
@@ -45,11 +52,4 @@ if(confirm("Перезагрузить страницу?")){
 if(confirm("Открыть гугл?")){
 	location.assign("https://www.google.ru/");
 }
-
-var hist= function(){
-	historu.go(1);
-	historu.back();
-	historu.forvard();
-	historu.length;
-}
-// hist();  
+},10000);
