@@ -31,13 +31,13 @@ var eras= function(){
 	var arg2= arg3.nextElementSibling;
 
 	table.setAttribute("style", "border-style: solid; border-color: #AAAAAA; width: 50vw; height: 50vh; margin: auto; font-size: 20px; text-align: center");
-	table.firstElementChild.firstElementChild.setAttribute("style","color: red; background-color: #BBBBBB ");
+	table.firstElementChild.firstElementChild.setAttribute("style","color: red; background-color: #BBBBBB;text-decoration: line-through ");
 		var e= setInterval(function(){
 			
 			console.log(Number(arg2.innerText))
 
 			if((Number(arg2.innerText)) % (Number(arg3.innerText)) == 0 && (Number(arg2.innerText)) != (Number(arg3.innerText))){
-				arg2.setAttribute("style","color: red; background-color: #BBBBBB ")
+				arg2.setAttribute("style","color: red; background-color: #BBBBBB; text-decoration: line-through ")
 			}
 
 			if(arg2.nextElementSibling != null){

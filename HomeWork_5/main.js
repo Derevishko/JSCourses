@@ -21,7 +21,10 @@ var timer= function(){
 		else{
 			arr[0]= (23-d.getHours());
 		}
-		if( 59-d.getMinutes() < 10 ){
+		if(d.getMinutes()==0){
+			arr[1]= "00";
+		}
+		else if( 59-d.getMinutes() < 10 ){
 			arr[1]= "0"+(59-d.getMinutes());
 		}
 		else{
