@@ -11,7 +11,7 @@
 // 	pol.children[0].lastElementChild.appendChild(td);
 // 	pol.children[0].firstElementChild.children[i].outerHTML= tdM ;
 // })
-var nameR= /\w{0,19}/;
+var nameR= /\w{3,20}/;
 var emailR= /^[a-z][\w\d\_\.]*\@[a-z][a-z]*\.\w{2,10}\.?$/
 var telR= /^\+?\s*(375|80)\s*\(?(25|29|33|44)\)?\s*\-*\d\s*\-*\d\s*\-*\d\s*\-*\d\s*\-*\d\s*\-*\d\s*\-*\d$/;
 var pageR= /^((https?:\/\/)?www\.\w[\w\_]*\w\.\w{2,10})/ 
@@ -31,7 +31,7 @@ if(this.firstElementChild.value!=""){
 }
 
 if(this.children[1].value!=""){
-	if(this.children[1].value<0||this.children[1].value>125||this.children[1].value!= parseFloat(this.children[1].value)){
+	if(this.children[1].value<14||this.children[1].value>=90||this.children[1].value!= parseFloat(this.children[1].value)){
 		this.children[1].setAttribute("style","background-color: red");
 		flag[1]=false;
 	}
