@@ -14,7 +14,7 @@
 var nameR= /\w{0,19}/;
 var emailR= /^[a-z][\w\d\_\.]*\@[a-z][a-z]*\.\w{2,10}\.?$/
 var telR= /^\+?\s*(375|80)\s*\(?(25|29|33|44)\)?\s*\-*\d\s*\-*\d\s*\-*\d\s*\-*\d\s*\-*\d\s*\-*\d\s*\-*\d$/;
-var pageR= /^((https?:\/\/\/?)?(www\.)?\w[\w\_\.]*\w\.\w{2,10})/ 
+var pageR= /^((https?:\/\/)?www\.\w[\w\_]*\w\.\w{2,10})/ 
 var form= document.getElementById("form");
 var div= document.getElementById("div");
 var flag= new Array(5);
