@@ -1,0 +1,31 @@
+table#calc{
+	box-sizing: border-box;
+	text-align: center;
+	height: 70vh;
+	width: 50vw;
+	margin: auto;
+	margin-bottom: 100px;
+	background-color: #DDDDDD;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #AAAAAA;
+	font-size: 5vh;
+}
+
+td{
+	height: 25px;
+	border-width: 1px;
+	border-color: inherit;
+	border-style: solid;
+}
+
+td:active{
+	background-color: #444444;
+}
+td#t{
+	width: 70vw;
+}
+
+table#form{
+	width: 70vw;
+}
