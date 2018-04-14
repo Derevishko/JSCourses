@@ -1,10 +1,9 @@
 // var one= document.getElementById("onePlayer");
 var repet= document.getElementById("repet");
-var table2= document.getElementById("game");
 var game= function(){
 	var style= document.getElementById("back");
 	var menu= document.getElementById("menu");
-	var table= table2;
+	var table= document.getElementById("game");
 	var flag= true;
 	var flag2= false;
 	var flag3= true;
@@ -36,11 +35,13 @@ var game= function(){
 					q++;
 					flag= !flag;
 					if(q==9) {
-						winer.innerText="ПОБЕДИЛА ДРУЖБА";
-						table.classList.toggle("invise");
-						table.outerHTML= table.outerHTML; 
-						winer.classList.add("win");
-						repet.classList.toggle("invise");
+						var res= setTimeout(function(){
+							winer.innerText="ПОБЕДИЛА ДРУЖБА";
+							table.classList.toggle("invise");
+							table.outerHTML= table.outerHTML; 
+							winer.classList.add("win");
+							repet.classList.toggle("invise");
+						},5000);
 					}
 
 					if(flag4) {compMoveRandom();}
@@ -64,11 +65,14 @@ var game= function(){
 				result();
 				q++;
 				if(q==9) {
+					var res= setTimeout(function(){
 						winer.innerText="ПОБЕДИЛА ДРУЖБА";
 						table.classList.toggle("invise");
 						table.outerHTML= table.outerHTML; 
 						winer.classList.add("win");
 						repet.classList.toggle("invise");
+					},5000);
+						
 					}
 				flag= !flag;
 				}
@@ -92,14 +96,15 @@ var game= function(){
 		
 
 		if(flag2){
-			console.log(arr, flag);
+			var res= setTimeout(function(){
+				table.classList.toggle("invise");
+				table.outerHTML= table.outerHTML; 
+				if(flag){winer.innerText= "ПОБЕДИЛ "+plaverOne}
+				else{winer.innerText= "ПОБЕДИЛ "+plaverTwo}
+				winer.classList.add("win");
+				repet.classList.toggle("invise");
+			},5000)
 			
-			table.classList.toggle("invise");
-			table.outerHTML= table.outerHTML; 
-			if(flag){winer.innerText= "ПОБЕДИЛ "+plaverOne}
-			else{winer.innerText= "ПОБЕДИЛ "+plaverTwo}
-			winer.classList.add("win");
-			repet.classList.toggle("invise");
 		}
 
 	}
