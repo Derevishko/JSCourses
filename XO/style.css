@@ -1,0 +1,84 @@
+div#menu{
+	width: 200px;
+	text-align: center;
+	margin: auto;
+	font-style: italic;
+	font-family: "Comic Sans MS", Georgia;
+	margin-top: 200px;
+
+}
+.r{
+	display: block;
+}
+
+.box{
+	border-style: solid;
+	margin: 5px;
+	display: inherit;
+}
+td{
+	width: 25vh;
+	height: 25vh;
+	border-style: solid;
+	border-radius: 2vh;
+	font-size: 0px; 
+}
+table{
+	margin: auto;
+}
+.ix{
+
+	background-image: url("image/krestik.png");
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+.zero{
+	background-image: url("image/nolik.png");
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+.invise{
+	display: none;
+}
+body.mount{
+	background-image: url("image/mount.jpg");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+body.Pole{
+	background-image: url("image/Pole.jpg");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+body.see{
+	background-image: url("image/see.jpg");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+body{
+	height: 100vh;
+	width: 100vw;
+}
+div.win{
+	width: 40vw;
+	height: 20vh;
+	font-family: "Arial";
+	font-size: 5vh;
+	color:red;
+	margin: auto;
+	margin-top: 200px;
+	text-align: center;
+}
+div#repet{
+	width: 5vh;
+	height: 5vh;
+	margin: auto;
+	background-image: url("image/repet.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
