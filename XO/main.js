@@ -35,12 +35,19 @@ var game= function(){
 					result();
 					q++;
 					flag= !flag;
-					if(q==9) flag4= false;
+					if(q==9) {
+						winer.innerText="ПОБЕДИЛА ДРУЖБА";
+						table.classList.toggle("invise");
+						table.outerHTML= table.outerHTML; 
+						winer.classList.add("win");
+						repet.classList.toggle("invise");
+					}
 
 					if(flag4) {compMoveRandom();}
 					q++;
 					result();
 					flag= !flag;
+
 				}
 			});
 		}else{
@@ -55,6 +62,14 @@ var game= function(){
 					arr[ +e.target.innerText-1]= 0;
 				}
 				result();
+				q++;
+				if(q==9) {
+						winer.innerText="ПОБЕДИЛА ДРУЖБА";
+						table.classList.toggle("invise");
+						table.outerHTML= table.outerHTML; 
+						winer.classList.add("win");
+						repet.classList.toggle("invise");
+					}
 				flag= !flag;
 				}
 			});
