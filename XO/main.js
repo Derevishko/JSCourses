@@ -1,4 +1,3 @@
-// var one= document.getElementById("onePlayer");
 var repet= document.getElementById("repet");
 var game= function(){
 	var style= document.getElementById("back");
@@ -29,11 +28,14 @@ var game= function(){
 		if(flag3){	
 			table.addEventListener("click", function(e){
 				if(e.target.nodeName=="TD" && e.target.classList==""){		
-					e.target.classList.add("ix");
-					arr[ +e.target.innerText-1]= 1;
-					result();
-					q++;
-					flag= !flag;
+					if(!flag2){
+						e.target.classList.add("ix");
+						arr[ +e.target.innerText-1]= 1;
+						result();
+						q++;
+						flag= !flag;
+					}
+					console.log(flag);
 					if(q==9) {
 						var res= setTimeout(function(){
 							winer.innerText="ПОБЕДИЛА ДРУЖБА";
@@ -41,14 +43,16 @@ var game= function(){
 							table.outerHTML= table.outerHTML; 
 							winer.classList.add("win");
 							repet.classList.toggle("invise");
-						},5000);
+						},1000);
 					}
-
-					if(flag4) {compMoveRandom();}
-					q++;
-					result();
-					flag= !flag;
-
+					if(!flag2){
+						flag= !flag;
+						if(flag4) {compMoveRandom();}
+						q++;
+						result();
+						
+						console.log(flag);
+					}
 				}
 			});
 		}else{
@@ -71,7 +75,7 @@ var game= function(){
 						table.outerHTML= table.outerHTML; 
 						winer.classList.add("win");
 						repet.classList.toggle("invise");
-					},5000);
+					},2000);
 						
 					}
 				flag= !flag;
@@ -81,15 +85,41 @@ var game= function(){
 	});
 
 	var result= function(){
-		if(((arr[0]==arr[4]&&arr[8]==arr[0])||(arr[2]==arr[4]&&arr[2]==arr[6]))&&arr[4]!=undefined){flag2=true;str= arr[4]}
+		if((arr[0]==arr[4]&&arr[8]==arr[0])&&arr[4]!=undefined){flag2=true;
+			table.firstElementChild.children[0].children[0].classList.add("green");
+			table.firstElementChild.children[1].children[1].classList.add("green");
+			table.firstElementChild.children[2].children[2].classList.add("green");
+			str= arr[4]}
+		else if((arr[2]==arr[4]&&arr[2]==arr[6])&&arr[4]!=undefined){
+			flag2=true;
+			table.firstElementChild.children[0].children[2].classList.add("green");
+			table.firstElementChild.children[1].children[1].classList.add("green");
+			table.firstElementChild.children[2].children[0].classList.add("green");
+
+			str= arr[4]
+		  }
 		else{
 				for( let i=0; i<3; i++ ){
-					if(arr[i*3]==arr[i*3+1]&&arr[i*3]==arr[i*3+2]&&arr[i*3+1]==arr[i*3+2]&&arr[i*3]!=undefined){flag2=true; str= arr[i]; console.log(i); break}
+					if(arr[i*3]==arr[i*3+1]&&arr[i*3]==arr[i*3+2]&&arr[i*3+1]==arr[i*3+2]&&arr[i*3]!=undefined){
+						flag2=true;
+						str= arr[i];
+						console.log(i);
+						table.firstElementChild.children[i].children[0].classList.add("green");
+						table.firstElementChild.children[i].children[1].classList.add("green");
+						table.firstElementChild.children[i].children[2].classList.add("green");
+						break;
+					}
 				}
 				
 				if(!flag2){
 					for(let i=0; i<3; i++ ){
-						if(arr[i]==arr[i+3]&&arr[i]==arr[i+6]&&arr[i+3]==arr[i+6]&&arr[i]!=undefined){flag2=true; str= arr[i]; break}
+						if(arr[i]==arr[i+3]&&arr[i]==arr[i+6]&&arr[i+3]==arr[i+6]&&arr[i]!=undefined){
+							flag2=true; 
+							str= arr[i]; 
+							table.firstElementChild.children[0].children[i].classList.add("green");
+							table.firstElementChild.children[1].children[i].classList.add("green");
+							table.firstElementChild.children[2].children[i].classList.add("green");
+							break}
 					}
 				}	
 			}
@@ -99,11 +129,11 @@ var game= function(){
 			var res= setTimeout(function(){
 				table.classList.toggle("invise");
 				table.outerHTML= table.outerHTML; 
-				if(flag){winer.innerText= "ПОБЕДИЛ "+plaverOne}
+				if(!flag){winer.innerText= "ПОБЕДИЛ "+plaverOne}
 				else{winer.innerText= "ПОБЕДИЛ "+plaverTwo}
 				winer.classList.add("win");
 				repet.classList.toggle("invise");
-			},5000)
+			},1000)
 			
 		}
 
