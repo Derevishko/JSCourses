@@ -1,0 +1,43 @@
+
+.invise{
+	display: none;
+}
+body{
+	width: 95vw;
+	height: 905vh;
+	margin: 0px;
+}
+div{
+	display: block;
+	border-right: 0px;
+	border-left: 0px;
+	border-bottom: 0px;
+}
+div#context{
+	margin: 0px;
+	position: relative;
+	width:170px;
+	height: 112px;
+	font-size: 18px;
+	background-color: #DDDDDD;
+	color: green;
+	border-style: solid;
+	border-width: 1px;
+	padding: 0px;	
+}
+ul{
+	display: block;
+	margin: 0px;
+	width: 115px;
+}
+div.block{
+	width: 100px;
+	display: flex;
+	height: 100px;
+	position: relative;
+	background-color: black;
+}
+.fixed {
+      position: fixed;
+      top: 0;
+      left: 0;
