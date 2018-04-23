@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HomeWork 10</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div id="textMenu">
+		<button id="bold">ж</button>
+		<button id="italic">к</button>
+		<select id="size">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>
+		</select>
+		<select id="textColor"> 
+			<option value="black" id="bt">Aa</option>
+			<option value="red" id="rt">Aa</option>
+			<option value="green" id="gt">Aa</option>
+			<option value="blue" id="blt">Aa</option>
+		</select>
+		<select id="textStyle">
+			<option value="Georgia">Georgia</option>
+			<option value="Arial">Arial</option>
+			<option value="Consolas">Consolas</option>
+			<option value="Mistral">Mistral</option>
+			<option value="Monotype Corsiva">Monotype Corsiva</option>
+		</select>
+		<span id="justify">
+			<button id="l" value="justifyleft">l</button>
+			<button id="c" value="justifycenter">c</button>
+			<button id="r" value="justifyright">r</button>
+		</span>
+	</div>
+	<div id="text" contenteditable="true"></div>
+
+	<audio src="Back in Black.mp3" id="song"></audio>
+	<div id="player"><div id="name"></div><button id="play">pause</button> <form id="select" style="align-items: flex-start;">  <input type="range" id="pos" value="0"></form>
+	<span id="timer">00:00/00:00</span> 
+	<span id="sol"><div class="mute" id="mute" style="background-image: url(vol.jpg)" ></div> 
+	<form id="select2" class="invise" style="align-items: flex-start;"><input type="range" id="volome" value="50" ></form></span></div>
+<script src="main.js"></script>
+<script src="main2.js"></script>
+</body>
+</html>
