@@ -30,18 +30,30 @@
 			<option value="Mistral">Mistral</option>
 			<option value="Monotype Corsiva">Monotype Corsiva</option>
 		</select>
+		<select id="backColor">
+			<option value="rgb(221, 221, 221)">none</option>
+			<option value="rgb(255, 0, 0)">red</option>
+			<option value="rgb(0, 0, 255)">blue</option>
+			<option value="rgb(0, 255, 0)">green</option>
+		</select>
 		<span id="justify">
 			<button id="l" value="justifyleft">l</button>
 			<button id="c" value="justifycenter">c</button>
 			<button id="r" value="justifyright">r</button>
 		</span>
+		<span>
+			<button id="ul">ul</button>
+			<button id="ol">ol</button>
+			<button id="del">X</button>
+		</span>
+
 	</div>
 	<div id="text" contenteditable="true"></div>
 
 	<audio src="Back in Black.mp3" id="song"></audio>
 	<div id="player"><div id="name"></div><button id="play">pause</button> <form id="select" style="align-items: flex-start;">  <input type="range" id="pos" value="0"></form>
 	<span id="timer">00:00/00:00</span> 
-	<span id="sol"><div class="mute" id="mute" style="background-image: url(vol.jpg)" ></div> 
+	<span id="sol"><div class="mute" id="mute" ></div> 
 	<form id="select2" class="invise" style="align-items: flex-start;"><input type="range" id="volome" value="50" ></form></span></div>
 <script src="main.js"></script>
 <script src="main2.js"></script>

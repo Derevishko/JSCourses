@@ -21,12 +21,14 @@ option{
 	width: 60vw;
 	background-color: #dddddd;
 	margin-bottom: 150px; 
+	min-width: 600px;
 }
 #textMenu{
 	display: flex;
 	width: 60vw;
 	align-content: center;
 	margin-bottom: 10px;
+	min-width: 600px;
 }
 span{
 	margin: 2px;
@@ -54,14 +56,20 @@ select{
 	background-color: #aaaaaa;
 
 }
-.mute{
-	width: 21px;
-	height: 21px;
-}
+
 form{
 	display: flex;
 }
 .mute{
+	width: 21px;
+	height: 21px;
+	background-image: url(vol.jpg);
+	cursor: pointer;
+}
+.Mute{
+	width: 21px;
+	height: 21px;
+	background-image: url(mute.jpg);
 	cursor: pointer;
 }
 #volome{

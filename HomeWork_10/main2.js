@@ -35,10 +35,12 @@ function audio(){
 		timer.innerText+= ":";
 		timer.innerText+= (Math.floor(song.duration % 60)).toString.length == 2 ? "0"+ Math.floor(song.duration % 60) : Math.floor(song.duration % 60);
 		form.children[0].value= song.currentTime / song.duration * 100;
-		console.log(song.loadmetadate);
 	},500);
 	mute.addEventListener("click", function(e){
 		song.muted= !song.muted;
+		mute.classList.toggle("mute");
+		mute.classList.toggle("Mute");
+		console.log(mute.classList);
 	});
 	volume.addEventListener("mouseover", function(){
 		form2.classList.remove("invise"); 
