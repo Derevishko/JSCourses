@@ -1,0 +1,32 @@
+.invise{
+	display:none;
+}
+img{
+	position: relative;
+	right: -250px;
+	top: -30px;
+	width: 250px;
+	height: 250px;
+}
+.price{
+	position: relative;
+	bottom: 200px;	
+}
+#contener-market{
+	font-family: "Verdena";
+	width: 60vh;
+	min-width: 600px;
+}
+#menu{
+	border-bottom:  solid 2px #555; 
+}
+.product{
+	margin: 10px;
+	padding: 10px;
+	border: solid 2px #555;
+}
+body{
+		background-image: url(img/back.jpeg);
+	background-repeat: no-repeat;
+	background-size: cover;
+}

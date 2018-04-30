@@ -1,0 +1,17 @@
+[
+	{
+	"name":"cheburek",
+		"price":21,
+		"contru":"E"
+	},
+					{
+		"name":"cheburek",
+		"price":12,
+		"contru":"E"
+	},
+					{
+		"name":"cheburek",
+		"price":5432,
+		"contru":"E"
+	}
+]

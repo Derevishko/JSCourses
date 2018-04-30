@@ -1,0 +1,20 @@
+{
+	"type":"items",
+	"item":[
+		{
+			"name":"barbell",
+			"price":312,
+			"img":"img/barbell.jpg"
+		},
+		{
+			"name":"block",
+			"price":1133,
+			"img":"img/block.jpg"
+		},
+		{
+			"name":"treadmill",
+			"price":518,
+			"img":"img/treadmill.jpg"
+		}
+	]
+}

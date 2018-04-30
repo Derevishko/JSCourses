@@ -1,0 +1,15 @@
+{
+	"type":"items",
+	"item":[
+		{
+			"name":"firstV",
+			"price":13,
+			"img":"img/firstV.jpeg"
+		},
+		{
+			"name":"secondV",
+			"price":433,
+			"img":"img/secondV.jpg"
+		}
+	]
+}

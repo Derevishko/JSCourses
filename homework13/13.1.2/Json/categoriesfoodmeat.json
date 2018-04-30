@@ -1,0 +1,15 @@
+{
+	"type":"items",
+	"item":[
+		{
+			"name":"firstM",
+			"price":12,
+			"img":"img/firstM.jpg"
+		},
+		{
+			"name":"secondM",
+			"price":33,
+			"img":"img/secondM.jpg"
+		}
+	]
+}

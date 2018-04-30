@@ -1,0 +1,20 @@
+{
+	"type":"items",
+	"item":[
+		{
+			"name":"firstFB",
+			"price":12,
+			"img":"img/firstFB.jpeg"
+		},
+		{
+			"name":"secondFB",
+			"price":33,
+			"img":"img/secondFB.jpg"
+		},
+		{
+			"name":"firstVB",
+			"price":18,
+			"img":"img/firstVB.jpeg"
+		}
+	]
+}
