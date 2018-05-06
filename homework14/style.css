@@ -1,0 +1,10 @@
+.task{
+	border: solid 2px #888;
+	border-radius: 10px;
+	width: 200px;
+	margin: 10px;
+	padding: 10px;
+}
+.invise{
+	display: none;
+}
