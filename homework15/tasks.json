@@ -1,0 +1,12 @@
+{
+	"tasks":[
+		{"name":"task1","priority":1,"dataFinish":"10.5.2018"},
+		{"name":"task2","priority":2,"dataFinish":"11.5.2018"},
+		{"name":"task3","priority":4,"dataFinish":"11.5.2018"},
+		{"name":"task4","priority":9,"dataFinish":"13.5.2018"},
+		{"name":"task5","priority":1,"dataFinish":"10.5.2018"},
+		{"name":"task6","priority":2,"dataFinish":""},
+		{"name":"task7","priority":1,"dataFinish":""},
+		{"name":"task8","priority":1,"dataFinish":"12.5.2018"}
+	]
+}
