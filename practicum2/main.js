@@ -40,8 +40,7 @@ var App = {
 		representSmallImages : function ( index, arrayImages ) {
 			App.htmlBlocks.smallImgs.innerHTML = ``;
 			var l = App.const.LENGTH_GALLERY;
-			var j = Math.floor ( l / 2 );
-			for ( let i = -j; i < j+1; i++ ) {
+			for ( let i = -2; i < 3; i++ ) {
 				App.htmlBlocks.smallImgs.innerHTML += `<img src='${ arrayImages [ this.returnIndex( index + i, l) ] }'
 				 value='${ this.returnIndex( index + i, l) }' data-value='${i}'>`
 			}
