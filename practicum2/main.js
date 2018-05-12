@@ -13,7 +13,7 @@ var App = {
 	functions : {
 		loadingJson : function () {
 			var promise = new Promise( function( resolve, reject ){
-				App.functions.onloadData (resolve, reject)
+				App.functions.loadingData (resolve, reject)
 			});
 			promise.then ( function (data) {
 				App.functions.secondStap (data)
@@ -23,13 +23,21 @@ var App = {
 			})
 			
 		},
-		onloadData : function ( resolve, reject ) {
+		loadingData : function ( resolve, reject ) {
 			var xhr= new XMLHttpRequest;
 			xhr.open ( "GET", App.const.JSON_DOC, true );
 			xhr.send (null);
 			xhr.addEventListener ( "load", function () {
 				resolve ( JSON.parse( xhr.responseText ) )
 			})
+		},
+		secondStap : function (data) {
+			var baseName = App.data;
+			baseName.objData = data;
+			App.const.LENGTH_GALLERY = baseName.objData.imgs.length;
+			baseName.arrayImg = this.getArrayImages ( baseName.objData );
+			baseName.arrayComents = this.getArrayComents ( baseName.objData );
+			this.representImg (baseName.index, baseName.arrayImg, baseName.arrayComents[baseName.index] );
 		},
 		representImg : function ( index, arrayImages, coment ) {
 			App.htmlBlocks.activeImage.innerHTML = `<img src='${arrayImages [ index ]}'>`;
@@ -40,7 +48,8 @@ var App = {
 		representSmallImages : function ( index, arrayImages ) {
 			App.htmlBlocks.smallImgs.innerHTML = ``;
 			var l = App.const.LENGTH_GALLERY;
-			for ( let i = -2; i < 3; i++ ) {
+			// 2 предыдущих и 2 следующих картинки
+			for ( let i = -4; i < 5; i++ ) {
 				App.htmlBlocks.smallImgs.innerHTML += `<img src='${ arrayImages [ this.returnIndex( index + i, l) ] }'
 				 value='${ this.returnIndex( index + i, l) }' data-value='${i}'>`
 			}
@@ -58,16 +67,9 @@ var App = {
 				return elem.text
 			})
 		},
-		secondStap : function (data) {
-			var self = App.namespace;
-			self.objData = data;
-			App.const.LENGTH_GALLERY = self.objData.imgs.length;
-			self.arrayImg = this.getArrayImages ( self.objData );
-			self.arrayComents = this.getArrayComents ( self.objData );
-			this.representImg (self.index, self.arrayImg, self.arrayComents[self.index] );
-		},
+		
 		setMenuEventListener : function (target) {
-			var self = App.namespace;
+			var baseName = App.data;
 			var countyOfMoving = 0;
 			if ( target.nodeName == "IMG" && target.hasAttribute( "data-action" ) ){
 				if ( target.getAttribute( "data-action" ) == "to left" ){
@@ -78,93 +80,96 @@ var App = {
 				  countyOfMoving = 1
 				}
 			} else if ( target.nodeName == "IMG" ) {
-				if ( target.getAttribute( "data-value" ) > 0 ){
-					countyOfMoving = 1
-				} else if ( target.getAttribute( "data-value" ) < 0 ){
-					countyOfMoving = -1
-				}
-				self.index =  Number( target.getAttribute("value") );
+					countyOfMoving = target.getAttribute( "data-value" )
+				baseName.index =  Number( target.getAttribute("value") );
 			};
-			if ( countyOfMoving < 0){
-				this.fromCenterToLeft(self)
-			} else if ( countyOfMoving > 0 ){
-				this.fromCenterToRight(self)
+			if ( countyOfMoving > 0 && App.data.flagMoving ){
+				App.data.flagMoving = false;
+				this.fromCenterToLeft(baseName);
+			} else if ( countyOfMoving < 0 && App.data.flagMoving  ){
+				App.data.flagMoving = false;
+				this.fromCenterToRight(baseName)
 			}
-
-			
+			this.carusel( countyOfMoving );
 		},
 		onOneStep : function (step) {
-			App.namespace.index = this.returnIndex( App.namespace.index + step, App.const.LENGTH_GALLERY )
+			App.data.index = this.returnIndex( App.data.index + step, App.const.LENGTH_GALLERY )
 		},
-		fromCenterToLeft : function (self) {
+		fromCenterToLeft : function (data) {
 			var position = App.htmlBlocks.activeImage;
-			position.style.setProperty("left", "0px");
 			var small = App.htmlBlocks.smallImgs;
-			small.style.setProperty( "opacity", 1);
+			var startPosition = position.getBoundingClientRect().left;
+			position.style.setProperty( "left", "0px" );			
+
 			var interval = setInterval( function () {
-				small.style.opacity -= 0.02;
 				position.style.left = parseFloat( position.style.left ) - 15 + "px";
-			if ( parseFloat( position.style.left) < - parseFloat(window.innerWidth)  ){
-				clearInterval(interval);
-				App.functions.representImg ( self.index, self.arrayImg, self.arrayComents[self.index] );
-				App.functions.fromRightToCenter()
-			}
+				if ( parseFloat( position.style.left) < - parseFloat(window.innerWidth)  ){
+					clearInterval(interval);
+					App.functions.representImg ( data.index, data.arrayImg, data.arrayComents[data.index] );
+					App.functions.fromRightToCenter (position, small, startPosition)
+				}
 			},15)
 		},
-		fromRightToCenter : function () {
-			var position = App.htmlBlocks.activeImage;
+		fromRightToCenter : function (position, small, finishPosition) {
 			position.style.left = `${window.innerWidth}px`;
-			var small = App.htmlBlocks.smallImgs;
-			var newOpacity = 0;
+			App.htmlBlocks.smallImgs.style.removeProperty("right");
 			var interval = setInterval( function () {
 				position.style.left = parseFloat( position.style.left ) - 15 + "px";
-				newOpacity += 0.02;
-				small.style.opacity = newOpacity;
-			if ( parseFloat( position.style.left)  <  0.05 * parseFloat(window.innerWidth)     ){
+			if ( parseFloat( position.style.left)  <  finishPosition ){
+				position.style.left= 0 + "px";
 				position.style.removeProperty("left");
-				position.style.removeProperty("opacity");
+				App.data.flagMoving = true;
 				clearInterval(interval)
 			}
 			},15)
 		},
-		fromCenterToRight : function (self) {
+		fromCenterToRight : function (data) {
 			var position = App.htmlBlocks.activeImage;
 			var small = App.htmlBlocks.smallImgs;
-			small.style.setProperty( "opacity", 1);
+			var startPosition = position.getBoundingClientRect().right;
 			position.style.setProperty("right", "0px");
 			var interval = setInterval( function () {
-				small.style.opacity -= 0.02;
 				position.style.right = parseFloat( position.style.right ) - 15 + "px";
-			if ( parseFloat( position.style.right) < - parseFloat(window.innerWidth)  ){
-				clearInterval(interval);
-				App.functions.representImg ( self.index, self.arrayImg, self.arrayComents[self.index] );
-				App.functions.fromLeftToCenter()
-			}
+				if ( parseFloat( position.style.right) < - parseFloat(window.innerWidth)  ){
+					clearInterval(interval);
+					App.functions.representImg ( data.index, data.arrayImg, data.arrayComents[data.index] );
+					App.functions.fromLeftToCenter ( position, small, startPosition )
+				}
 			},15)
 		},
-		fromLeftToCenter : function () {
-			var position = App.htmlBlocks.activeImage;
-			var small = App.htmlBlocks.smallImgs;
-			var newOpacity = 0;
-			position.style.right = `${window.innerWidth}px`;
+		fromLeftToCenter : function (position, small, finishPosition) {
+			position.style.right = `${window.innerWidth}px`
+			App.htmlBlocks.smallImgs.style.removeProperty("right");;
 			var interval = setInterval( function () {
 				position.style.right = parseFloat( position.style.right ) - 15 + "px";
-				newOpacity += 0.02;
-				small.style.opacity = newOpacity;
-			if ( parseFloat( position.style.right)  <  0.05 * parseFloat(window.innerWidth)     ){
-				position.style.removeProperty("right");
-				position.style.removeProperty("opacity");
-				clearInterval(interval)
-			}
+				if ( parseFloat( position.style.right)  < 0 ){
+					position.style.right= 0 + "px";
+					position.style.removeProperty("right");
+					App.data.flagMoving = true;
+					clearInterval(interval)
+				}
+			},15)
+		},
+		carusel : function ( koficent ) {
+			console.log(koficent)
+			var small = App.htmlBlocks.smallImgs;
+			var signKof = koficent / Math.abs( koficent );
+			small.style.setProperty("right","0px");
+			var timer = setInterval (function () {
+				small.style.right = parseFloat(small.style.right) + 0.31 * koficent + "%";
+				if (  Math.abs( parseFloat(small.style.right) ) > 20.5  * Math.abs( koficent )){
+					clearInterval(timer);
+				}
 			},15)
 		}
 
 	},
-	namespace : {
+	data : {
 		objData : null,
 		arrayImg : null,
 		arrayComents : null,
-		index : 0	
+		index : 0,
+		flagMoving : true	
 	},
 	events : {
 		addEvents : function () {

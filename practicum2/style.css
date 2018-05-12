@@ -7,23 +7,38 @@
 	height: 30px;
 	width: 70vw;
 	font-size: 14px;
-	font-family: "Verdena";
+	font-family:  "Arial", "Verdena";
 }
 #menu-gallery img{
-	width: 9vw;
-	margin: 1vw;
+	width: 5vw;
+	margin:  1vw;
 	height: 10vh;
 }
-#menu-gallery{
+#small-imgs img{
+	width: 18%;
+}
+#small-imgs{
+	justify-content: center; 
+	position: relative;
 	display: flex;
+}
+#conter-small-img{
 	justify-content: center;
+	display: flex;
+	width: 70vw;
+	overflow: hidden;
+
+}
+#menu-gallery{ 
+	justify-content: center;
+	display: flex;
 }
 body{
 	overflow:  hidden; 
 	width: 100vw;
 	height: 100vh;
 	margin: 0px;
-	background: linear-gradient(45deg, #00f, #0f0);
+	background-image: url(img/back.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 }
