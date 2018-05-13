@@ -18,8 +18,8 @@ var App = {
 			promise.then ( function (data) {
 				App.functions.secondStap (data)
 			},
-			function (){
-				alert ( "error" )
+			function (data) {
+				alert ( data )
 			})
 			
 		},
@@ -29,6 +29,9 @@ var App = {
 			xhr.send (null);
 			xhr.addEventListener ( "load", function () {
 				resolve ( JSON.parse( xhr.responseText ) )
+			});
+			xhr.addEventListener( "error", function () {
+				reject( "error on load data" );
 			})
 		},
 		secondStap : function (data) {
@@ -48,7 +51,7 @@ var App = {
 		representSmallImages : function ( index, arrayImages ) {
 			App.htmlBlocks.smallImgs.innerHTML = ``;
 			var l = App.const.LENGTH_GALLERY;
-			// 2 предыдущих и 2 следующих картинки
+			// 2 предыдущих и 2 следующих картинки и 2 на каждой стороне за пределами видимости
 			for ( let i = -4; i < 5; i++ ) {
 				App.htmlBlocks.smallImgs.innerHTML += `<img src='${ arrayImages [ this.returnIndex( index + i, l) ] }'
 				 value='${ this.returnIndex( index + i, l) }' data-value='${i}'>`
@@ -90,7 +93,12 @@ var App = {
 				App.data.flagMoving = false;
 				this.fromCenterToRight(baseName)
 			}
-			this.carusel( countyOfMoving );
+			if (  App.data.flagMovingCarusel && countyOfMoving ){
+				App.data.flagMovingCarusel = false;
+				this.carusel( countyOfMoving );
+			}
+			
+			
 		},
 		onOneStep : function (step) {
 			App.data.index = this.returnIndex( App.data.index + step, App.const.LENGTH_GALLERY )
@@ -102,7 +110,7 @@ var App = {
 			position.style.setProperty( "left", "0px" );			
 
 			var interval = setInterval( function () {
-				position.style.left = parseFloat( position.style.left ) - 15 + "px";
+				position.style.left = parseFloat( position.style.left ) - 35 + "px";
 				if ( parseFloat( position.style.left) < - parseFloat(window.innerWidth)  ){
 					clearInterval(interval);
 					App.functions.representImg ( data.index, data.arrayImg, data.arrayComents[data.index] );
@@ -114,13 +122,15 @@ var App = {
 			position.style.left = `${window.innerWidth}px`;
 			App.htmlBlocks.smallImgs.style.removeProperty("right");
 			var interval = setInterval( function () {
-				position.style.left = parseFloat( position.style.left ) - 15 + "px";
-			if ( parseFloat( position.style.left)  <  finishPosition ){
-				position.style.left= 0 + "px";
-				position.style.removeProperty("left");
-				App.data.flagMoving = true;
-				clearInterval(interval)
-			}
+				position.style.left = parseFloat( position.style.left ) - 35 + "px";
+				if ( parseFloat( position.style.left)  <  finishPosition ){
+					position.style.left= 0 + "px";
+					position.style.removeProperty("left");
+					App.data.flagMoving = true;
+					clearInterval( interval );
+					App.htmlBlocks.smallImgs.classList.add( "stop" );
+					App.data.flagMovingCarusel = true
+				}
 			},15)
 		},
 		fromCenterToRight : function (data) {
@@ -129,11 +139,11 @@ var App = {
 			var startPosition = position.getBoundingClientRect().right;
 			position.style.setProperty("right", "0px");
 			var interval = setInterval( function () {
-				position.style.right = parseFloat( position.style.right ) - 15 + "px";
+				position.style.right = parseFloat( position.style.right ) - 35 + "px";
 				if ( parseFloat( position.style.right) < - parseFloat(window.innerWidth)  ){
 					clearInterval(interval);
 					App.functions.representImg ( data.index, data.arrayImg, data.arrayComents[data.index] );
-					App.functions.fromLeftToCenter ( position, small, startPosition )
+					App.functions.fromLeftToCenter ( position, small, startPosition );
 				}
 			},15)
 		},
@@ -141,17 +151,19 @@ var App = {
 			position.style.right = `${window.innerWidth}px`
 			App.htmlBlocks.smallImgs.style.removeProperty("right");;
 			var interval = setInterval( function () {
-				position.style.right = parseFloat( position.style.right ) - 15 + "px";
+				position.style.right = parseFloat( position.style.right ) - 35 + "px";
 				if ( parseFloat( position.style.right)  < 0 ){
 					position.style.right= 0 + "px";
 					position.style.removeProperty("right");
 					App.data.flagMoving = true;
 					clearInterval(interval)
+					App.htmlBlocks.smallImgs.classList.add("stop");
+					App.data.flagMovingCarusel = true
 				}
 			},15)
 		},
 		carusel : function ( koficent ) {
-			console.log(koficent)
+			App.htmlBlocks.smallImgs.classList.remove("stop");
 			var small = App.htmlBlocks.smallImgs;
 			var signKof = koficent / Math.abs( koficent );
 			small.style.setProperty("right","0px");
@@ -169,7 +181,8 @@ var App = {
 		arrayImg : null,
 		arrayComents : null,
 		index : 0,
-		flagMoving : true	
+		flagMoving : true,
+		flagMovingCarusel : true
 	},
 	events : {
 		addEvents : function () {
