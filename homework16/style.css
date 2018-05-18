@@ -1,0 +1,20 @@
+#workers td{
+	font-size: 20px;
+	
+}
+#workers{
+	border-spacing: 0px;
+	border: 1px solid black;
+}
+img{
+	width: 20px;
+}
+#menu{
+	background-color: #bbb;
+}
+#menu~td{
+	background-color: #fff;
+}
+.highlight{
+	background-color: #aaa;
+}
