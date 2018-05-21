@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" href="style.css">
+	<meta charset="UTF-8">
+	<title>homework19</title>
+</head>
+<body>
+	<canvas id="pen" width="500px" height="500px"></canvas>
+	
+	<div id="menu">
+		<button>black-white</button>
+		<button>negative</button>
+		<button>sepia</button>
+	</div>
+	<div>
+		<img src="img.png" id="img" style="border-style: ">
+		<img src="img.png" id="img2" class="invise">
+	</div>
+	<canvas id="filter" width="545" height="600" class="invise"></canvas>
+
+	<audio id="song"></audio>
+	<div id="player">
+		<div id="name"></div>
+		<button id="play">pause</button>
+		<form id="select" style="align-items: flex-start;">
+			<input type="range" id="pos" value="0">
+		</form>
+		<span id="timer">00:00/00:00</span> 
+		<span id="sol">
+			<div class="mute" id="mute" ></div> 
+			<form id="select2" class="invise" style="align-items: flex-start;">
+				<input type="range" id="volome" value="50" >
+			</form>
+		</span>
+	</div>
+	<div id="contener" class="border"></div>
+
+	<script src="main1.js"></script>
+</body>
+</html>

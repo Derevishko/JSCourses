@@ -1,0 +1,71 @@
+canvas{
+	border: 1px solid black;
+}
+.invise{
+	display: none;
+}
+select{
+	cursor: pointer;
+	height: 25px;	
+	margin: 2px;
+}
+#play{
+	width: 40px;
+	padding: 0px;
+	text-align: center;
+	display: flex;
+}
+#pos{
+	width: 500px;
+	background-color: #aaaaaa;
+
+}
+
+form{
+	display: flex;
+}
+.mute{
+	width: 21px;
+	height: 21px;
+	background-image: url(vol.jpg);
+	cursor: pointer;
+}
+.Mute{
+	width: 21px;
+	height: 21px;
+	background-image: url(mute.jpg);
+	cursor: pointer;
+}
+#volome{
+	position: relative;
+	left: -25px;
+	top: -70px; 
+	width: 70px;
+	transform: rotate(270deg);
+}
+.invise{
+	display: none;
+}
+input[type=range]{
+	cursor: pointer;
+
+}
+input[type=range]::-ms-thumb{
+	color: red;
+}
+#player{
+	display: flex;
+	width: 700px;
+	height: 25px;
+	background-color: #555;
+	/*overflow: hidden;*/
+}
+.border{
+	margin-top: 40px;
+	border: 1px solid black;
+	width: 400px;
+	height: 100px;
+}
+.blue{
+	border: 2px solid blue;
+}
