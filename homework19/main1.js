@@ -5,11 +5,16 @@ function pen () {
 	var xOld = 0;
 	var yOld = 0;
 	var imgData = ctx.getImageData(0,0,500,500);
-	var loadData = localStorage.getItem("data").split(",").map(x=>Number(x));
-	var l = imgData.data.length;
-	for ( let i = 0; i < l; i++ ) {
-		imgData.data[i] = loadData[i];
+	var loadData;
+	if ( localStorage.getItem("data") != undefined ) {
+		var loadData = localStorage.getItem("data").split(",").map(x=>Number(x));
+		var l = imgData.data.length;
+		for ( let i = 0; i < l; i++ ) {
+			imgData.data[i] = loadData[i];
+		}
 	}
+	
+	
 	ctx.putImageData(imgData,0,0);
 	document.body.addEventListener( "mousedown", function (e) {
 		mouseDownFlag = true;
