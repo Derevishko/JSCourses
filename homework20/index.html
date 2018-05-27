@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>homework20</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://www.gstatic.com/firebasejs/5.0.3/firebase.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-storage.js"></script>
+
+	<script>
+	  // Initialize Firebase
+	  var config = {
+	    apiKey: "AIzaSyA1SbdKCtLedotmgsckynuSo942vpDjRTU",
+	    authDomain: "derevishko-69fc8.firebaseapp.com",
+	    databaseURL: "https://derevishko-69fc8.firebaseio.com",
+	    projectId: "derevishko-69fc8",
+	    storageBucket: "derevishko-69fc8.appspot.com",
+	    messagingSenderId: "971964385088"
+	  };
+	  firebase.initializeApp(config);
+	</script>
+</head>
+<body>
+	<script src="http://maps.google.com/maps/api/js?key=AIzaSyCZj6UqysGhv4RVwLOCzUYM-H4cxL9DuxY"></script>
+	<div class="contener">
+		<div id="news"></div>
+		<div id="map"></div>
+	</div>
+	<script src="main.js"></script>
+</body>
+</html>
